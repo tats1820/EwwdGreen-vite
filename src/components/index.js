@@ -1,0 +1,1 @@
+export {default as firstComponent} from "./firstComponent/componentes.js"

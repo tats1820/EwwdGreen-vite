@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!-![endif]-->
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="./public/images/imagenes Lacho/Weedgreenicon.png">
+    <title>Ejercicio Semestral</title>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="singleProduct.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;800;900&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!--Empieza el header-->
+    <!-- Idea para poner el header responsive: 
+<header id="header" class="d-flex justify-content-between align-items-center">
+  <div class="logoHeaderSection">
+    <a href="https://weedgreen.com/" target="_blank">
+      <img id="logoWeedGreen" src="./src-Lacho/WeedGreenLogo.png" class="img-fluid">
+    </a>
+  </div>
+  <div class="buttonBuyAndSearchHeader d-flex justify-content-end align-items-center">
+    <img id="logoButton" src="./src-Lacho/Lupa.png" class="img-fluid mr-3">
+    <img id="logoButton" src="./src-Lacho/Car.png" class="img-fluid">
+  </div>
+</header>
+ -->
+    <header id="headerdesktop">
+        <section class="logoHeaderSection">
+            <a href="https://weedgreen.com/" target="_blank">
+                <img id="logoWeedGreen" src="./public/images/images lacho/WeedGreenLogo.png">
+            </a>
+        </section>
+
+        <section class="buttonBuyAndSearchHeader">
+            <img id="logoButton" src="./public/images/images lacho/Lupa.png">
+            <img id="logoButton" src="./public/images/images lacho/Car.png">
+        </section>
+
+    </header>
+
+    <div id="productos"></div>
+
+    <div id="talla">
+        <select id="size-selector">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select>
+    </div>
+
+
+    <nav>
+        <div class="columns">
+            <a href="product_list.html" class="column"></a>
+        </div>
+
+
+    </nav>
+
+
+
+
+    <footer class="row" id="footer">
+        <div class="col" id="footerColumn">
+
+            <h2 id="footerTitle">ABOUT OUR STORE</h2>
+            <p id="footerText">Use this text area to tell your customers about your brand and vision.
+                You can change
+                it
+                in the theme
+                editor.</p>
+
+            <p id="footerText" data-toggle="tooltip" data-placement="top" title="Tooltip text">WeedGreen</p>
+
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">POLÍTICAS</h2>
+            <ul id="footerText">
+                <li>Términos & Condiciones</li>
+                <li>Envíos</li>
+            </ul>
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">NEWSLETTER</h2>
+            <p id="footerText">Suscríbete para recibir lanzamientos, descuentos, y contenido curado para
+                nuestros
+                lectores.</p>
+            <section id="buttonEmail">
+                <input id="inputEmail" type="Su e-mail">
+                <button>enviar</button>
+            </section>
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">FOLLOW US</h2>
+            <p id="footerText">Síguenos en nuestras redes sociales</p>
+            <section id="socialLinks">
+                <img src="./public/images/Social/instagram.png" alt="">
+                <img src="./public/images/Social/instagram.png" alt="">
+            </section>
+            <button id="social1"></button>
+            <button id="social2"></button>
+        </div>
+    </footer>
+    <script src="main.js" async defer></script>
+    <script src="./productList/productList.js"></script>
+    <script src="./singleProduct.js"></script>
+    <script src="./components/firstComponent/componentes.js"></script>
+</body>
+
+</html>

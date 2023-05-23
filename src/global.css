@@ -1,0 +1,461 @@
+.tittlesH1 {
+    font-family: "Poppins", sans-serif;
+    font-size: 30pt;
+    font-weight: 800;
+    color: rgb(30, 30, 30);
+    text-align: center;
+  }
+  
+  .textHistory {
+    color: rgb(30, 30, 30);
+    text-align: left;
+    font-size: 15pt;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  #headerdesktop {
+    width: 100%;
+    position: fixed;
+    display: flex;
+    margin-bottom: 10px;
+  
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+  }
+  
+  .buttonBuyAndSearchHeader {
+    display: flex;
+    position: absolute;
+    margin-right: 30px;
+    right: 0;
+    gap: 20px;
+  }
+  
+  #logoButton {
+    width: 100%;
+  }
+  
+  .primary-button {
+    padding: 10px 24px;
+    color: rgb(0, 0, 0);
+    background-color: #1dd800;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    transition: 0.5s;
+    justify-content: center;
+  }
+  
+  .primary-button:hover {
+    background-color: rgb(0, 133, 47);
+    color: white;
+  }
+  
+  #BannerIntroduction {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 150px;
+  }
+  
+  #button-introduction {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+  }
+  
+  #BannerHistory {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+  }
+  
+  #BannerCarousel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /*padding: 100px;*/
+  }
+  
+  #BannerNewCollection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  #branch_presentation {
+    margin: 0;
+    height: 100%;
+  }
+  
+  #branch_presentation img {
+    height: 100%;
+  }
+  
+  .text {
+    padding: 150px;
+    text-align: start;
+  }
+  
+  #button-history {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .card-body {
+    flex: auto;
+    text-align: center;
+  }
+  
+  .acordeonSection {
+    width: 100%;
+    padding-top: 100px;
+  }
+  
+  .ulAcordeon {
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .liAcordeon {
+    position: relative;
+    float: left;
+    width: 16%;
+  }
+  
+  .liAcordeon:hover {
+    width: 50%;
+  }
+  
+  .linkAcordeon {
+    height: 100px;
+  }
+  
+  .acordeonTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 40pt;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+  
+    position: absolute;
+    bottom: 2%;
+    margin-right: 100px;
+  }
+  
+  .acordeonTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 40pt;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+  
+    position: absolute;
+    bottom: 2%;
+    margin-right: 100px;
+  }
+  
+  #ContenedorBanner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 20%;
+  }
+  
+  #expectCTA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #BannerCTA {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 20%;
+  }
+  
+  #imgCTA {
+    width: 100%;
+  }
+  
+  #imgCTA:hover {
+    transition: 1s;
+    scale: 105%;
+  }
+  
+  .card-wrapper {
+    display: flex;
+  }
+  
+  .card {
+    margin: 1%;
+    width: calc(100% / 3);
+  }
+  
+  /* SIBLING FADE: desvanecer hermanos alrededor de un elemento rondado */
+  
+  /* Prevents: que el hover se active en los espacios entre elementos */
+  .sibling-fade {
+    visibility: hidden;
+  }
+  
+  /* Vuelve a mostrar los elementos secundarios, aunque el elemento principal esté "oculto". */
+  .sibling-fade > * {
+    visibility: visible;
+  }
+  
+  /* Hace que los desvanecimientos sean suaves con un ligero retardo para evitar saltos cuando el ratón se mueve entre los elementos. */
+  .sibling-fade > * {
+    transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+  }
+  
+  /* Desvanecimiento de todos los elementos al pasar el ratón por encima del elemento principal */
+  .sibling-fade:hover > * {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+  
+  /* Desvanecimiento del elemento sobre el que se pasa el ratón */
+  .sibling-fade > *:hover {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0ms, 0ms;
+  }
+  
+  .sibling-fade {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .sibling-fade > * {
+    background: white;
+    padding: 1em;
+    flex: auto;
+    margin: 0.3em;
+    text-align: center;
+    color: #f05555;
+    font-size: 1.5em;
+    text-decoration: none;
+  }
+  
+  #videoembed {
+    /**width: 100%;*/
+    height: 1080px;
+  }
+  
+  #footer {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    padding: 50px 0;
+  }
+  
+  /* #footer:hover {
+    background-color: white;
+    color: black;
+  } */
+  
+  #footerColumn {
+    /* background-color: rgb(0, 0, 0); */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  #buttonEmail {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  /*#inputEmail {
+  }*/
+  
+  #footerText {
+    font-family: "Poppins", sans-serif;
+    font-size: 12pt;
+    margin: 50px;
+    font-weight: 400;
+    color: #ffffff;
+  }
+  
+  #socialLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2px;
+    margin: 5px;
+  }
+  
+  #footerTitle {
+    font-family: "Poppins", sans-serif;
+    font-size: 12pt;
+    font-weight: 800;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding-top: 5%;
+  }
+  
+  /* -------------- ESTILOS MOBILE */
+  
+  @media (max-width: 896px) {
+    #headerdesktop {
+      width: 100%;
+      position: absolute;
+      display: flex;
+      margin-bottom: 10px;
+  
+      justify-content: center;
+      align-items: center;
+      background-color: #ffffff;
+    }
+  
+    #logoWeedGreen {
+      width: 150px;
+    }
+  
+    #logoButton {
+      width: 30%;
+      height: 30%;
+    }
+  
+    #album {
+      width: 100%;
+      height: 100%;
+    }
+  
+    .card-body {
+      flex: auto;
+      padding: none;
+      text-align: center;
+    }
+  
+    #BannerCarousel {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  
+    #branch_presentation {
+      margin: 0;
+      height: 49%;
+    }
+  
+    #BannerHistory {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 21px;
+    }
+  
+    .textHistory {
+      color: rgb(30, 30, 30);
+      text-align: left;
+      font-size: 10pt;
+      font-weight: 400;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+    }
+  
+    #button-history {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-bottom: 32px;
+    }
+  
+    #BannerIntroduction {
+      width: 100%;
+      height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  
+    .tittlesH1 {
+      font-family: "Poppins", sans-serif;
+      font-size: 19pt;
+      font-weight: 800;
+      color: rgb(30, 30, 30);
+      /* text-align: center; */
+    }
+  
+    /* SIBLING FADE: desvanecer hermanos alrededor de un elemento rondado */
+  
+    /* Prevents: que el hover se active en los espacios entre elementos */
+    .sibling-fade {
+      visibility: hidden;
+    }
+  
+    .fade-Img {
+      width: 100%;
+    }
+  
+    /* Vuelve a mostrar los elementos secundarios, aunque el elemento principal esté "oculto". */
+    .sibling-fade > * {
+      visibility: visible;
+    }
+  
+    /* Hace que los desvanecimientos sean suaves con un ligero retardo para evitar saltos cuando el ratón se mueve entre los elementos. */
+    .sibling-fade > * {
+      transition: opacity 150ms linear 100ms, transform 150ms ease-in-out 100ms;
+    }
+  
+    /* Desvanecimiento de todos los elementos al pasar el ratón por encima del elemento principal */
+    .sibling-fade:hover > * {
+      opacity: 0.4;
+      transform: scale(0.9);
+    }
+  
+    /* Desvanecimiento del elemento sobre el que se pasa el ratón */
+    .sibling-fade > *:hover {
+      opacity: 1;
+      transform: scale(1);
+      transition-delay: 0ms, 0ms;
+    }
+  
+    .sibling-fade {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  
+    .sibling-fade > * {
+      background: white;
+      padding: 1em;
+      flex: auto;
+      margin: 0.3em;
+      text-align: center;
+      color: #f05555;
+      font-size: 1.5em;
+      text-decoration: none;
+    }
+  
+    #videoembed {
+      /**width: 100%;*/
+      height: 360px;
+    }
+  }
+  

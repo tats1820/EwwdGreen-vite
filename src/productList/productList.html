@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!-![endif]-->
+<html>
+
+<head>
+    <link rel="icon" type="image/x-icon" href="./images/images lacho/Weedgreenicon.png">
+    <title>Ejercicio Semestral</title>
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="productList.css">
+    <link rel="stylesheet" href="global.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;800;900&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+        </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!--Empieza el header-->
+    <!-- Idea para poner el header responsive: 
+<header id="header" class="d-flex justify-content-between align-items-center">
+  <div class="logoHeaderSection">
+    <a href="https://weedgreen.com/" target="_blank">
+      <img id="logoWeedGreen" src="./src-Lacho/WeedGreenLogo.png" class="img-fluid">
+    </a>
+  </div>
+  <div class="buttonBuyAndSearchHeader d-flex justify-content-end align-items-center">
+    <img id="logoButton" src="./src-Lacho/Lupa.png" class="img-fluid mr-3">
+    <img id="logoButton" src="./src-Lacho/Car.png" class="img-fluid">
+  </div>
+</header>
+ -->
+    <header id="headerdesktop">
+        <section class="logoHeaderSection">
+            <a href="https://weedgreen.com/" target="_blank">
+                <img id="logoWeedGreen" src="./public/images/images lacho/WeedGreenLogo.png">
+            </a>
+        </section>
+
+        <section class="buttonBuyAndSearchHeader">
+            <img id="logoButton" src="./public/images/images lacho/Lupa.png">
+            <img id="logoButton" src="./public/images/images lacho/Car.png">
+        </section>
+
+    </header>
+
+    <section class="seccion_filtros">
+        <nav class="filtro_navegación" role="filtro">
+            <div class="columns">
+                <h1>Hola mundo</h1>
+                <select class="columna_desplegable" name="destacados" id="filtro_destacados"></select>
+            </div>
+        </nav>
+
+        <section class="filtros_productos">
+            <section class="texto_filtros">
+                <span class="texto_guia_filtrado">Filtrar por:</span>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+
+                    <select name="TIPO_PRENDA" id="filter_tipo_prenda" class="filter_list">
+                        <option value="Todo">Todo</option>
+                        <option value="Hoodie con cierre">Hoodie con cierre</option>
+                        <option value="Camiseta 01">Camiseta 01</option>
+                        <option value="Top 01">Top 01</option>
+                        <option value="Pantalon Cargo">Pantalon Cargo</option>
+                        <option value="Pantaloneta">Pantaloneta</option>
+                        <option value="Camibuso  corto">Camibuso  corto</option>
+                        <option value="Short">Short</option>
+                        <option value="Bermuda">Bermuda</option>
+                        <option value="Sudadera">Sudadera</option>
+                        <option value="Saco">Saco</option>
+                        <option value="Jogger">Jogger</option>
+                        <option value="Accesorios">Accesorios</option>
+                    </select>
+
+                    <select name="MATERIAL" id="filter_tipo_material" class="filter_list">
+                        <option value="Todo">Todo</option>
+                        <option value="100% poliester">100% poliester</option>
+                        <option value="100% algodón">100% algodón</option>
+                        <option value="20% poliester, 80% algodón">20% poliester, 80% algodón</option>
+                        <option value="80% poliester, 20% algodón">80% poliester, 20% algodón</option>
+                    </select>
+
+                    <select name="SECCION" id="filter_tipo_seccion" class="filter_list">
+                        <option value="Todo">Todo</option>
+                        <option value="Comunidad Andina">Comunidad Andina</option>
+                        <option value="Paradox of self">Paradox of self</option>
+                        <option value="Linea ADN">Linea ADN</option>
+                        <option value="The color of silence">The color of silence</option>
+                        <option value="Respect Life">Respect Life</option>
+                        <option value="Drop III">Drop III</option>
+                        <option value="DRILL">DRILL</option>
+                        <option value="Last chance">Last chance</option>
+                        <option value="Fruits & Kush">Fruits & Kush</option>
+                    </select>
+
+                    <select name="SEXO" id="filter_tipo_sexo" class="filter_list">
+                        <option value="Todo">Todo</option>
+                        <option value="Mujer">Mujer</option>
+                        <option value="Hombre">Hombre</option>
+                        <option value="unisex">unisex</option>
+                    </select>
+
+                 <!-- <a class="navbar-link">
+              Tipo de prenda
+            </a>
+      
+            <div class="navbar-dropdown">
+              <a class="navbar-item1">
+                Camisa
+              </a>
+              <a class="navbar-item1">
+                Camisa oversize
+              </a>
+              <a class="navbar-item1">
+                Pinta
+              </a>
+              <a class="navbar-item1">
+                Sueter
+              </a>
+              <a class="navbar-item1">
+                Pañoleta
+              </a>
+              <a class="navbar-item1">
+                Calzado                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+              </a> -->
+            </div>
+            </div>
+            </div>
+            </section>
+            <div id="productos_destacados"></div>
+        </section>
+
+    </section>
+
+
+<app-container></app-container>
+
+
+    <footer class="row" id="footer">
+        <div class="col" id="footerColumn">
+
+            <h2 id="footerTitle">ABOUT OUR STORE</h2>
+            <p id="footerText">Use this text area to tell your customers about your brand and vision.
+                You can change
+                it
+                in the theme
+                editor.</p>
+
+            <p id="footerText" data-toggle="tooltip" data-placement="top" title="Tooltip text">WeedGreen</p>
+
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">POLÍTICAS</h2>
+            <ul id="footerText">
+                <li>Términos & Condiciones</li>
+                <li>Envíos</li>
+            </ul>
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">NEWSLETTER</h2>
+            <p id="footerText">Suscríbete para recibir lanzamientos, descuentos, y contenido curado para
+                nuestros
+                lectores.</p>
+            <section id="buttonEmail">
+                <input id="inputEmail" type="Su e-mail">
+                <button>enviar</button>
+            </section>
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">FOLLOW US</h2>
+            <p id="footerText">Síguenos en nuestras redes sociales</p>
+            <section id="socialLinks">
+                <img src="./public/images/Social/instagram.png" alt="">
+                <img src="./public/images/Social/youtube.png" alt="">
+            </section>
+            <button id="social1"></button>
+            <button id="social2"></button>
+        </div>
+    </footer>
+    <script type="module" src="./main.js" async defer></script>
+    <script type="module" src="./products.js"></script>
+    <script src="./components/firstComponent/componentes.js"></script>
+</body>
+
+</html>
