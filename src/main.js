@@ -10,7 +10,7 @@ class AppContainer extends HTMLElement{
 
     render(){
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="./stylesheet.css">
+        <link rel="stylesheet" href="../stylesheet.css">
         <app-header class="componentes"></app-header>
         `
     }
