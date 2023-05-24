@@ -1,4 +1,4 @@
-import getData from "../../json.js"   
+import getData from "../../../src/json"   
 
 let list = [];
 
@@ -24,12 +24,12 @@ class firstComponent extends HTMLElement {
 render(){
     this.shadowRoot.style = "display: flex; flex-direction: row; flex-wrap: wrap;"
     this.shadowRoot.innerHTML =`
-    <link rel="stylesheet" href="./componentes/firstComponent/style.css">
+    <link rel="stylesheet" href="../components/firstComponent/style.css">
  `;
     list.forEach((item)=>{
 
         this.shadowRoot.innerHTML +=`  
-        <a href= './singleProduct.html?id=${item.num}' class="card_fil">          
+        <a href= '../singleProduct.html?id=${item.num}' class="card_fil">          
         <div class="container">
     
     <div class="card">
