@@ -30,7 +30,7 @@ render(){
     list.forEach((item)=>{
 
         this.shadowRoot.innerHTML +=`  
-        <a href= '../singleProduct.html?id=${item.num}' class="card_fil">          
+        <a href= '../singleProduct/singleProduct.html?id=${item.num}' class="card_fil">          
         <div class="container">
     
     <div class="card">

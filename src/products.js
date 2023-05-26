@@ -75,7 +75,7 @@ function mostrar(productsList) {
         
         productosDestacados.innerHTML += 
         
-        `<a href= './singleProduct.html?id=${producto.num}' class="card_fil">
+        `<a href= '../singleProduct/singleProduct.html?id=${producto.num}' class="card_fil">
         <figure class= "card_figure"><img class= "card_img" src="${producto.imagenProducto}"></figure>
         <article class="card_article">
             <h2>${producto.item}</h2>
