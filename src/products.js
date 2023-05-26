@@ -1,4 +1,4 @@
-import getData from "./json.js";
+import getData from "./json";
 
 
 
@@ -13,10 +13,7 @@ filter_tipo_seccion.addEventListener("change", (e) => {filtrado()});
 filter_tipo_sexo.addEventListener("change", (e) => {filtrado()});
 
 function filtrado () {
-
-
-let filtradoDeProductos = [...productsList];
-console.log(filtradoDeProductos);
+let filtradoDeProductos = [...list];
 const tipo_prenda = filter_tipo_prenda.value || "";
 const tipo_material = filter_tipo_material.value || "";
 const tipo_seccion = filter_tipo_seccion.value || "";
@@ -68,10 +65,10 @@ mostrar();
 
 
 const productosDestacados = document.getElementById("productos_destacados");
-let filtrado_productos = productsList;
+//let filtrado_productos = productsList;
 
 getData().then((a)=>{filtrado_productos = a
-    mostrar(productsList)})
+    mostrar(filtrado_productos)})
 
 function mostrar(productsList) {
     productsList.forEach((producto) => {

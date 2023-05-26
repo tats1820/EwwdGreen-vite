@@ -1,4 +1,5 @@
-import getData from "../../../src/json"   
+import getData from "./json.js";
+
 
 let list = [];
 
