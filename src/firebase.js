@@ -1,46 +1,52 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import {
+    initializeApp
+} from "firebase/app";
+
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Configura tu proyecto de Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyAq2LKJ8F2eG1OmGkcuVLMVbkidjq8lDMg",
-    authDomain: "perfil-999ac.firebaseapp.com",
-    projectId: "perfil-999ac",
-    storageBucket: "perfil-999ac.appspot.com",
-    messagingSenderId: "1015608397607",
-    appId: "1:1015608397607:web:1bac96c6d874be35302302"
-  };
-  
-  // Obtiene una referencia al formulario de inicio de sesión
-  var loginForm = document.getElementById("loginForm");
-  
-  // Agrega un listener al formulario de inicio de sesión
-  loginForm.addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita el envío del formulario
-  
-    // Obtiene los valores de los campos de correo electrónico y contraseña
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-  
-    // Inicia sesión con Firebase
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(function(userCredential) {
-        // Inicio de sesión exitoso
-        var user = userCredential.user;
-        console.log("Inicio de sesión exitoso:", user);
-        // Aquí puedes redirigir al usuario a otra página o realizar otras acciones
-      })
-      .catch(function(error) {
-        // Error en el inicio de sesión
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        console.error("Error en el inicio de sesión:", errorCode, errorMessage);
-        // Aquí puedes mostrar un mensaje de error al usuario
-      });
-  });
 
-  // Initialize Firebase
+import {
+    getFirestore,
+    collection,
+    getDocs,
+    addDoc,
+    setDoc,
+    doc,
+} from "firebase/firestore";
+
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+    apiKey: "AIzaSyAX2frIeUE6yu5KMoO6KM6Ih9AtiZlkhNE",
+    authDomain: "proyectocomentarios-54b38.firebaseapp.com",
+    projectId: "proyectocomentarios-54b38",
+    storageBucket: "proyectocomentarios-54b38.appspot.com",
+    messagingSenderId: "99426446216",
+    appId: "1:99426446216:web:f13cbe77ceb2ab836aa83d",
+    measurementId: "G-7VJ5Z326Z2"
+};
+
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+export async function getProdcuts() {
+    const allProducts = [];
+
+    const querySnapshot = await getDocs(collection(db, "productos"));
+    querySnapshot.forEach((doc) => {
+        console.log("hola🐸");
+        allProducts.push({
+            ...doc.data(),
+            id: doc.id
+        });
+    });
+
+    return allProducts;
+}
   

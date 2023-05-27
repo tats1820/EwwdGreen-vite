@@ -1,3 +1,7 @@
+import {
+  getProdcuts
+} from "../firebase.js";
+
 const link = window.location.search;
 /* const buscarPagina = new URLSearchParams(link); */
 const buscarPagina = new URLSearchParams(link);
@@ -5,12 +9,48 @@ const singleProduct = buscarPagina.get("id").replace('"', "");
 const buttonComentario = document.getElementById("comentario-button");
 
 /* const productoPorSeparado = productsList.find((object) => object.id == singleProduct) */
-
-const productoPorSeparado = productsList.find(
-  (data) => data.num == singleProduct
-);
-
+traerProducto();
 /////
+async function traerProducto() {
+  let productos = await getProdcuts()
+  console.log(productos)
+  const productoPorSeparado = productos.find(
+    (data) => data.id == singleProduct
+  );
+  pintar(productoPorSeparado);
+}
+
+function pintar(productoPorSeparado) {
+
+  const productosLink = document.getElementById("productos");
+  productosLink.innerHTML = "";
+  productosLink.innerHTML =
+    /* productosLink.innerHTML +=  */
+    `<section class="card_list">
+      <figure class= "card_figure"><img class= "card_img" src="${productoPorSeparado.imagenProducto}"></figure>
+      <article class="card_article">
+          <h2 class="name_detail">${productoPorSeparado.item}</h2>
+          <p class='descri_detail'>${productoPorSeparado.sobreModelo}</p>
+          <h5 class="price_detail"> ${productoPorSeparado.precio}</h5>
+          <p class="collect_detail">Collection: ${productoPorSeparado.tipo}</p>
+          
+          <button id="añadir" class="button is-black button_añadir">Añadir</button>
+  
+          <h3>Comentarios</h3>
+          <input type="text" id="comentario-input"></input>
+          <button id="comentario-button" onclick="addTocomentarioArray()">Enviar comentario</button>
+          <div id="error-message" style="display: none; color: red;">Por favor ingrese un texto</div>
+          <div id = "comentario-list">
+          </div>
+          <div id = "comentarioRobot-list"></div>
+          <div id="message-container" style="display: block;">No hay comentarios</div>
+      
+          </article>
+  </section>`;
+
+
+}
+
 
 function addTocomentarioArray() {
   // Obtener el texto de entrada del usuario
@@ -30,7 +70,7 @@ function addTocomentarioArray() {
 
   // Obtener el ID del producto actual y su lista de comentarios
   const currentId = singleProduct;
-  const currentProduct = productsList.find((data) => data.num == currentId);
+  const currentProduct = productsList.find((data) => data.id == currentId);
   const comentarioArray = currentProduct.comentarioArray || [];
 
   // Agregar el nuevo comentario a la lista de comentarios
@@ -76,7 +116,7 @@ function addTocomentarioArray() {
 
 function deleteComment(index) {
   let currentId = singleProduct;
-  let currentProduct = productsList.find((data) => data.num == currentId);
+  let currentProduct = productsList.find((data) => data.id == currentId);
   let comentarioArray = currentProduct.comentarioArray || [];
   comentarioArray.splice(index, 1);
   currentProduct.comentarioArray = comentarioArray;
@@ -121,37 +161,11 @@ function deleteComment(index) {
   }
 }
 
-const productosLink = document.getElementById("productos");
-productosLink.innerHTML = "";
-productosLink.innerHTML =
-  /* productosLink.innerHTML +=  */
-  `<section class="card_list">
-    <figure class= "card_figure"><img class= "card_img" src="${productoPorSeparado.imagenProducto}"></figure>
-    <article class="card_article">
-        <h2 class="name_detail">${productoPorSeparado.item}</h2>
-        <p class='descri_detail'>${productoPorSeparado.sobreModelo}</p>
-        <h5 class="price_detail"> ${productoPorSeparado.precio}</h5>
-        <p class="collect_detail">Collection: ${productoPorSeparado.tipo}</p>
-        
-        <button id="añadir" class="button is-black button_añadir">Añadir</button>
-
-        <h3>Comentarios</h3>
-        <input type="text" id="comentario-input"></input>
-        <button id="comentario-button" onclick="addTocomentarioArray()">Enviar comentario</button>
-        <div id="error-message" style="display: none; color: red;">Por favor ingrese un texto</div>
-        <div id = "comentario-list">
-        </div>
-        <div id = "comentarioRobot-list"></div>
-        <div id="message-container" style="display: block;">No hay comentarios</div>
-    
-        </article>
-</section>`;
 
 let commentPreDiv = document.createElement("div");
 let commentList = "<ul>";
 productoPorSeparado.comments.forEach((comment) => {
-  if (productoPorSeparado.comments.length === 0) {
-  } else {
+  if (productoPorSeparado.comments.length === 0) {} else {
     document.getElementById("message-container").style.display = "none";
 
     commentList += `
