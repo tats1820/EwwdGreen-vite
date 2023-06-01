@@ -7,6 +7,7 @@ await retrieveProducts()
 renderProducts()
 
 const nameInput = document.getElementById('name-input')
+const precioInput = document.getElementById('precio-input')
 const urlInput = document.getElementById('url-input')
 const inputFile = document.getElementById('product-img')
 const submitbtn = document.getElementById('submit-btn')
