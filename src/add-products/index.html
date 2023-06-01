@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir productos - admin</title>
+</head>
+
+<body>
+    <header-component></header-component>
+    <h1>Firebase examples</h1>
+    <button id="log-out">Cerrar Sesion</button>
+    <section>
+        <br><br><br>
+        <h2>Add a product:</h2>
+        <form>
+            <label for="url">imagen del producto:</label>
+            <input type="file" id="product-img" name="img" accept="image/png, image/jpeg">
+            <label for="item">nombre del producto:</label>
+            <input type="text" name="name" id="name-input">
+            <label for="precio">precio:</label>
+            <input type="text" name="precio" id="precio-input">
+            <label for="sobreModelo">Datos sobre el modelo:</label>
+            <input type="text" name="sobreModelo" id="psobreModelo-input">
+            <label for="tipo">Tipo de prenda:</label>
+            <input type="text" name="tipo" id="tipo-input">
+            <label for="coleccion">colección:</label>
+            <input type="text" name="coleccion" id="coleccion-input">
+            <label for="sexo">Género:</label>
+            <input type="text" name="sexo" id="sexo-input">
+            <!-- <label for="url">Image Url:</label>
+            <input type="text" name="url" id="url-input"> -->
+            <button id="submit-btn">ADD PRODUCT</button>
+        </form>
+        <br><br><br>
+    </section>
+    <hr>
+    <h2>All products:</h2>
+    <section id="products-container">
+
+    </section>
+    <hr>
+    <script type="module" src="../importWebComponents.js"></script>
+    <script type="module" src="./add-products.js"></script>
+</body>
+
+</html>
