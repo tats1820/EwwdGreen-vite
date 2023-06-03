@@ -5,45 +5,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Añadir productos - admin</title>
+    <title>Añadir producto</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header-component></header-component>
-    <h1>Firebase examples</h1>
-    <button id="log-out">Cerrar Sesion</button>
-    <section>
-        <br><br><br>
-        <h2>Add a product:</h2>
-        <form>
-            <label for="url">imagen del producto:</label>
-            <input type="file" id="product-img" name="img" accept="image/png, image/jpeg">
-            <label for="item">nombre del producto:</label>
-            <input type="text" name="name" id="name-input">
-            <label for="precio">precio:</label>
-            <input type="text" name="precio" id="precio-input">
-            <label for="sobreModelo">Datos sobre el modelo:</label>
-            <input type="text" name="sobreModelo" id="psobreModelo-input">
-            <label for="tipo">Tipo de prenda:</label>
-            <input type="text" name="tipo" id="tipo-input">
-            <label for="coleccion">colección:</label>
-            <input type="text" name="coleccion" id="coleccion-input">
-            <label for="sexo">Género:</label>
-            <input type="text" name="sexo" id="sexo-input">
-            <!-- <label for="url">Image Url:</label>
-            <input type="text" name="url" id="url-input"> -->
-            <button id="submit-btn">ADD PRODUCT</button>
-        </form>
-        <br><br><br>
-    </section>
-    <hr>
-    <h2>All products:</h2>
-    <section id="products-container">
+    <header>
+        <!-- Contenido del encabezado -->
+    </header>
 
-    </section>
-    <hr>
-    <script type="module" src="../importWebComponents.js"></script>
-    <script type="module" src="./add-products.js"></script>
+    <main>
+        <h1>Añadir un nuevo producto</h1>
+        <form id="add-product-form">
+            <div class="form-group">
+                <label for="product-img">Imagen del producto:</label>
+                <input type="file" id="product-img" name="img" accept="image/png, image/jpeg">
+            </div>
+            <div class="form-group">
+                <label for="name-input">Nombre del producto:</label>
+                <input type="text" name="name" id="name-input">
+            </div>
+            <div class="form-group">
+                <label for="precio-input">Precio:</label>
+                <input type="text" name="precio" id="precio-input">
+            </div>
+            <div class="form-group">
+                <label for="sobreModelo-input">Datos sobre el modelo:</label>
+                <input type="text" name="sobreModelo" id="sobreModelo-input">
+            </div>
+            <div class="form-group">
+                <label for="tipo-input">Tipo de prenda:</label>
+                <input type="text" name="tipo" id="tipo-input">
+            </div>
+            <div class="form-group">
+                <label for="coleccion-input">Colección:</label>
+                <input type="text" name="coleccion" id="coleccion-input">
+            </div>
+            <div class="form-group">
+                <label for="sexo-input">Género:</label>
+                <input type="text" name="sexo" id="sexo-input">
+            </div>
+            <div class="form-group">
+                <button type="submit" id="submit-btn">Agregar producto</button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <!-- Contenido del pie de página -->
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
