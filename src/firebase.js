@@ -18,7 +18,7 @@ import {
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-import { userValidation } from './userValidation.js'
+//import { userValidation } from './userValidation.js'
 
 
 // Your web app's Firebase configuration
@@ -49,7 +49,7 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-export async function getProdcuts() {
+/*export async function getProdcuts() {
     const allProducts = [];
 
     const querySnapshot = await getDocs(collection(db, "products"));
@@ -152,7 +152,7 @@ export async function addUserToDB(userData, uid) {
     } catch (e) {
         console.error("Error adding user: ", e);
     }
-}
+}*/
 
 export async function getProdcuts() {
     const allProducts = [];
@@ -168,4 +168,3 @@ export async function getProdcuts() {
 
     return allProducts;
 }
-  
