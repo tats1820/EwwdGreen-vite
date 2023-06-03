@@ -49,13 +49,16 @@ onAuthStateChanged(auth, (user) => {
     }
 });
 
-/*export async function getProdcuts() {
+export async function getProdcuts() {
     const allProducts = [];
 
-    const querySnapshot = await getDocs(collection(db, "products"));
+    const querySnapshot = await getDocs(collection(db, "productos"));
     querySnapshot.forEach((doc) => {
-        console.log(`${doc.id} => ${doc.data()}`);
-        allProducts.push({...doc.data(), id: doc.id });
+        console.log("hola🐸");
+        allProducts.push({
+            ...doc.data(),
+            id: doc.id
+        });
     });
 
     return allProducts;
@@ -152,19 +155,4 @@ export async function addUserToDB(userData, uid) {
     } catch (e) {
         console.error("Error adding user: ", e);
     }
-}*/
-
-export async function getProdcuts() {
-    const allProducts = [];
-
-    const querySnapshot = await getDocs(collection(db, "productos"));
-    querySnapshot.forEach((doc) => {
-        console.log("hola🐸");
-        allProducts.push({
-            ...doc.data(),
-            id: doc.id
-        });
-    });
-
-    return allProducts;
 }
