@@ -8,6 +8,7 @@ renderProducts()
 
 const nameInput = document.getElementById('name-input')
 const precioInput = document.getElementById('precio-input')
+
 const urlInput = document.getElementById('url-input')
 const inputFile = document.getElementById('product-img')
 const submitbtn = document.getElementById('submit-btn')
@@ -43,6 +44,7 @@ async function uploadProduct(e) {
 
     const newObj = {
         name: nameInput.value,
+        precio: precioInput.value, 
         /* url: urlInput.value,*/
         date: Date.now()
     }
