@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Añadir productos - admin</title>
+    <link rel="stylesheet" href="/src/add-products/styles.css">
 </head>
 
 <body>
@@ -14,36 +15,59 @@
     <button id="log-out">Cerrar Sesion</button>
     <section>
         <br><br><br>
-        <h2>Add a product:</h2>
+        <h2>Añade un producto:</h2>
         <form>
-            <label for="url">imagen del producto:</label>
-            <input type="file" id="product-img" name="img" accept="image/png, image/jpeg">
-            <label for="item">nombre del producto:</label>
+
+            <label for="url">Imagen del producto:</label>
+            <input type="file" id="product-img" name="img" accept="image/png, image/jpeg"
+                onchange="previewImage(event)">
+            <img id="preview" src="#" alt="Vista previa de la imagen" style="max-width: 300px; display: none;">
+            <label for="item">Nombre del producto:</label>
             <input type="text" name="name" id="name-input">
-            <label for="precio">precio:</label>
+            <label for="precio">Precio:</label>
             <input type="text" name="precio" id="precio-input">
             <label for="sobreModelo">Datos sobre el modelo:</label>
             <input type="text" name="sobreModelo" id="psobreModelo-input">
             <label for="tipo">Tipo de prenda:</label>
             <input type="text" name="tipo" id="tipo-input">
-            <label for="coleccion">colección:</label>
+            <label for="coleccion">Colección:</label>
             <input type="text" name="coleccion" id="coleccion-input">
             <label for="sexo">Género:</label>
             <input type="text" name="sexo" id="sexo-input">
             <!-- <label for="url">Image Url:</label>
             <input type="text" name="url" id="url-input"> -->
-            <button id="submit-btn">ADD PRODUCT</button>
+            <button id="submit-btn">Añadir producto</button>
         </form>
         <br><br><br>
     </section>
     <hr>
-    <h2>All products:</h2>
+    <h2>Tus productos publicados:</h2>
     <section id="products-container">
 
     </section>
     <hr>
     <script type="module" src="../importWebComponents.js"></script>
     <script type="module" src="./add-products.js"></script>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,73 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    /* Estilos para el encabezado */
+}
+
+main {
+    margin: 50px auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#preview {
+    max-width: 300px;
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+
+input[type="file"],
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button#submit-btn {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button#submit-btn:hover {
+    background-color: #45a049;
+}
+
+footer {
+    /* Estilos para el pie de página */
+}

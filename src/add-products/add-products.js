@@ -1,6 +1,11 @@
 import '../global.css'
 import '../components/firstComponent/style.css'
-import { getProdcuts, addProduct, addProductWithId, logOut } from '../firebase.js'
+import {
+    getProdcuts,
+    addProduct,
+    addProductWithId,
+    logOut
+} from '../firebase.js'
 
 let products = []
 await retrieveProducts()
