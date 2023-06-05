@@ -1,6 +1,9 @@
 import '../components/firstComponent/style.css'
 import {
-    getProdcuts,
+    v4 as uuidv4
+} from 'uuid';
+import {
+    getProductsAdded,
     addProduct,
     addProductWithId,
     logOut
@@ -10,17 +13,7 @@ let products = []
 await retrieveProducts()
 renderProducts()
 
-// const nameInput = document.getElementById('name-input')
-// const precioInput = document.getElementById('precio-input')
-// const urlInput = document.getElementById('url-input')
-// const sexoInput = document.getElementById('sexo-input')
-// const coleccionInput = document.getElementById('coleccion-input')
-// const tipoInput = document.getElementById('tipo-input')
-// const sobreModeloInput = document.getElementById('sobreModelo-input')
-// const materialInput = document.getElementById('material-input')
 const productForm = document.querySelector('.productForm');
-
-
 const submitbtn = document.getElementById('submit-btn')
 const logOutBtn = document.getElementById('log-out')
 
@@ -28,7 +21,7 @@ submitbtn.addEventListener('click', (e) => uploadProduct(e))
 logOutBtn.addEventListener('click', () => logOut())
 
 async function retrieveProducts() {
-    products = await getProdcuts()
+    products = await getProductsAdded()
 }
 
 function renderProducts() {
@@ -37,10 +30,17 @@ function renderProducts() {
     container.innerHTML = ''
 
     products.forEach((product) => {
+
         const elem = document.createElement('div')
         elem.className = 'product'
         elem.innerHTML = `
     <h2>${product.item}</h2>
+    <p>${product.material}</p>
+    <p>${product.sexo}</p>
+    <p>${product.precio}</p>
+    <p>${product.tipo}</p>
+    <p>${product.sobreModelo}</p>
+    <h1>${product.coleccion}</h1>
     <img src="${product.imagenProducto}" alt="${'reference Image for '+ product.name}" />    
     `
         container.append(elem)
@@ -64,26 +64,18 @@ async function uploadProduct(e) {
 
     };
 
-    // const newObj = {
-    //     coleccion: coleccionInput.value,
-    //     imagenProducto: urlInput.value,
-    //     item: nameInput.value,
-    //     material: materialInput.value,
-    //     precio: precioInput.value,
-    //     sexo: sexoInput.value,
-    //     sobreModelo: sobreModelo.value,
-    //     tipo: tipoInput.value,
-    // }
 
 
 
 
 
-    let id = "30";
+
+    let id = uuidv4();
+
     console.log('Subio producto', product)
 
     // await addProduct(newObj)
-    await addProductWithId(product,id)
+    await addProductWithId(product, id)
     await retrieveProducts()
     renderProducts()
 }

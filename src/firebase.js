@@ -16,8 +16,19 @@ import {
     setDoc,
     doc,
 } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from "firebase/storage";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    onAuthStateChanged,
+    signOut
+} from "firebase/auth";
 //import { userValidation } from './userValidation.js'
 
 
@@ -43,9 +54,9 @@ onAuthStateChanged(auth, (user) => {
     console.log('hubo un cambio en auth')
     if (user) {
         // const uid = user.uid;
-       // userValidation(true, user.email)
+        // userValidation(true, user.email)
     } else {
-       // userValidation(false)
+        // userValidation(false)
     }
 });
 
@@ -63,6 +74,21 @@ export async function getProdcuts() {
     return allProducts;
 }
 
+export async function getProductsAdded() {
+    const newProducts = [];
+
+    const querySnapshot = await getDocs(collection(db, "products"));
+    querySnapshot.forEach((doc) => {
+        newProducts.push({
+            ...doc.data(),
+            id: doc.id
+        });
+    });
+
+    return newProducts;
+}
+
+
 /////////////Uploades
 
 export async function addProduct(product) {
@@ -79,7 +105,9 @@ export async function addProductWithId(product, id) {
     try {
         // const imageUrl = await uploadFile(file.name, file, 'products');
 
-        await setDoc(doc(db, "products", id), {...product });
+        await setDoc(doc(db, "products", id), {
+            ...product
+        });
     } catch (e) {
         console.error("Error adding document: ", e);
     }
@@ -113,13 +141,23 @@ export async function createUser(email, password, username, file) {
         const imageUrl = await uploadFile(file.name, file, 'users');
 
         /// crear registro en BD
-        await addUserToDB({username, imageUrl, email},user.uid)
+        await addUserToDB({
+            username,
+            imageUrl,
+            email
+        }, user.uid)
 
-        return { status: true, info: user.uid };
+        return {
+            status: true,
+            info: user.uid
+        };
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
-        return { status: false, info: errorMessage };
+        return {
+            status: false,
+            info: errorMessage
+        };
     }
 }
 
@@ -127,11 +165,17 @@ export async function logInUser(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password)
         const user = userCredential.user;
-        return { status: true, info: user.uid };
+        return {
+            status: true,
+            info: user.uid
+        };
     } catch (error) {
         const errorCode = error.code;
         const errorMessage = error.message;
-        return { status: false, info: errorMessage };
+        return {
+            status: false,
+            info: errorMessage
+        };
     }
 }
 
