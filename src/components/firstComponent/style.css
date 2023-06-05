@@ -34,9 +34,9 @@ body {
 
 .card {
     display: flex;
-   flex-direction: column;
-   height: 100%;
-   position: relative;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
     width: min-content;
     padding: 10px;
     margin: 0 20px;
