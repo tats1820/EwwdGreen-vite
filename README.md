@@ -6,4 +6,5 @@ Taller semestral de Programacion Web donde iremos integrando diferentes elemento
 - npm i vite
 - npm i firebase
 - npm install uuid
+
 Listo :).
