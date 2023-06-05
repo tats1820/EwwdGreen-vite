@@ -64,12 +64,6 @@ async function uploadProduct(e) {
 
     };
 
-
-
-
-
-
-
     let id = uuidv4();
 
     console.log('Subio producto', product)
