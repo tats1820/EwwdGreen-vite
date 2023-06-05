@@ -54,7 +54,6 @@ export async function getProdcuts() {
 
     const querySnapshot = await getDocs(collection(db, "productos"));
     querySnapshot.forEach((doc) => {
-        console.log("hola🐸");
         allProducts.push({
             ...doc.data(),
             id: doc.id
@@ -64,9 +63,11 @@ export async function getProdcuts() {
     return allProducts;
 }
 
+/////////////Uploades
+
 export async function addProduct(product) {
     try {
-        const docRef = await addDoc(collection(db, "products"), product);
+        const docRef = await addDoc(collection(db, "productos"), product);
 
         console.log("Document written with ID: ", docRef.id);
     } catch (e) {
@@ -74,27 +75,27 @@ export async function addProduct(product) {
     }
 }
 
-export async function addProductWithId(product, id, file) {
+export async function addProductWithId(product, id) {
     try {
-        const imageUrl = await uploadFile(file.name, file, 'products');
+        // const imageUrl = await uploadFile(file.name, file, 'products');
 
-        await setDoc(doc(db, "products", id), {...product, url: imageUrl });
+        await setDoc(doc(db, "products", id), {...product });
     } catch (e) {
         console.error("Error adding document: ", e);
     }
 }
 
-export async function uploadFile(name, file, folder) {
-    const taskImgRef = ref(storage, `${folder}/${name}`);
+// export async function uploadFile(name, file, folder) {
+//     const taskImgRef = ref(storage, `${folder}/${name}`);
 
-    try {
-        await uploadBytes(taskImgRef, file);
-        const url = await getDownloadURL(taskImgRef);
-        return url;
-    } catch (error) {
-        console.log("error creando imagen ->", error);
-    }
-}
+//     try {
+//         await uploadBytes(taskImgRef, file);
+//         const url = await getDownloadURL(taskImgRef);
+//         return url;
+//     } catch (error) {
+//         console.log("error creando imagen ->", error);
+//     }
+// }
 
 export async function createUser(email, password, username, file) {
     try {

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./account.css">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../addProducts/styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;800;900&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
+
+    <title>Añadir productos - admin</title>
+</head>
+
+<body>
+
+    <header id="headerdesktop">
+        <h1>Add products to Firebase</h1>
+        <section class="logoHeaderSection">
+            <a href="https://weedgreen.com/" target="_blank">
+                <img id="logoWeedGreen" src="../public/images/images lacho/WeedGreenLogo.png">
+            </a>
+        </section>
+
+        <section class="buttonBuyAndSearchHeader">
+            <div class="container-cart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="icon-cart">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                <div class="count-products">
+                    <span id="contador-productos">0</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="productListHeader">
+            <button id="log-out">Cerrar Sesion</button>
+        </section>
+
+    </header>
+    <header-component></header-component>
+    <h1></h1>
+    <section>
+        <br><br><br>
+        <h2>Añade un producto:</h2>
+        <form class="productForm">
+
+            
+<!-- 
+            <label for="">Imagen del producto:</label>
+            <input type="file" id="img" class="img" name="img" accept="image/png, image/jpeg"
+                onchange="previewImage(event)">
+            <img id="preview" src="#" alt="Vista previa de la imagen" style="max-width: 300px; display: none;"> -->
+
+            <label for="">Nombre del producto:</label>
+            <input class="productForm__input" id="name" name="name" type="text">
+
+            <label for="">URL de la imagen:</label>
+            <input class="productForm__input" id="url" name="url" type="text">
+
+            <label for="">Precio del producto:</label>
+            <input class="productForm__input" id="precio" name="precio" type="text">
+
+            <label for="">Datos sobre el modulo:</label>
+            <input class="productForm__input" id="sobreModelo" name="sobreModelo" type="text">
+
+            <label for="">Tipo de prenda:</label>
+            <input class="productForm__input" id="tipo" name="tipo" type="text">
+
+            <label for="">Material:</label>
+            <input class="productForm__input" id="material" name="material" type="text">
+
+            <label for="">Colección:</label>
+            <input class="productForm__input" id="coleccion" name="coleccion" type="text">
+
+            <label for="">Sexo:</label>
+            <input class="productForm__input" id="sexo" name="sexo" type="text">
+
+
+            <button id="submit-btn" type="button">Añadir producto</button>
+        </form>
+        <br><br><br>
+    </section>
+    <hr>
+    <h2>Tus productos publicados:</h2>
+    <section id="products-container">
+
+    </section>
+    <hr>
+    <script type="module" src="../importWebComponents.js"></script>
+    <script type="module" src="./add-products.js"></script>
+    <!-- <script>
+        function previewImage(event) {
+            const input = event.target;
+            const preview = document.getElementById('preview');
+
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                preview.src = '#';
+                preview.style.display = 'none';
+            }
+        }
+    </script> -->
+
+</body>
+
+</html>
