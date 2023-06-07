@@ -3,13 +3,9 @@ import {
     initializeApp
 } from "firebase/app";
 
-import {getAuth} from "firebase/auth";
-
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-
 import {
     getFirestore,
     collection,
@@ -127,6 +123,8 @@ export async function addProductWithId(product, id) {
 //     }
 // }
 
+//crear usuarios
+
 export async function createUser(email, password, username, file) {
     try {
         const userCredential = await createUserWithEmailAndPassword(
@@ -137,7 +135,6 @@ export async function createUser(email, password, username, file) {
 
         // Signed in
         const user = userCredential.user;
-        // console.log("usuario creado con ->", user.uid);
 
         /// subir imagen
         const imageUrl = await uploadFile(file.name, file, 'users');
@@ -163,6 +160,8 @@ export async function createUser(email, password, username, file) {
     }
 }
 
+//log-in del usuario
+
 export async function logInUser(email, password) {
     try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password)
@@ -180,6 +179,8 @@ export async function logInUser(email, password) {
         };
     }
 }
+
+//logOut del usuario
 
 export async function logOut() {
 

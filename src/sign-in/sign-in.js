@@ -1,4 +1,4 @@
-import '../global.scss'
+import '../global.css'
 import { createUser } from '../firebase.js'
 
 const buttonSignIn = document.querySelector('#button-sign-in')
