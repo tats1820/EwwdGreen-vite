@@ -28,7 +28,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-    </script>
+        </script>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
 </head>
@@ -60,17 +60,47 @@
         </section>
 
         <section class="buttonBuyAndSearchHeader">
-            <div class="container-cart-icon">
+            <div class="container-cart-icon" data-bs-toggle="collapse" href="#collapseExample" role="button"
+            aria-expanded="false" aria-controls="collapseExample">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="icon-cart">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                 </svg>
+                
                 <div class="count-products">
                     <span id="contador-productos">0</span>
                 </div>
             </div>
         </section>
+
+        <!-- prueba login -->
+
+
+        
+
+
+        <!-- Pruebas log in -->
+
+        <!-- <p>
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                aria-expanded="false" aria-controls="collapseExample">
+                Link with href
+            </a>
+            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                Button with data-bs-target
+            </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                the user activates the relevant trigger.
+            </div>
+        </div>
+ -->
+
+        <!-- Fin pruebas Log in -->
 
         <section class="AccountHeader">
             <a href="./account/account.html">
@@ -79,6 +109,15 @@
         </section>
 
     </header>
+
+
+        <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when
+                the user activates the relevant trigger.
+            </div>
+        </div>
+ 
 
     <section class="seccion_filtros">
         <nav class="filtro_navegación" role="filtro">
