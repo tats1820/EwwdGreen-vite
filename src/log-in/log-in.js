@@ -1,5 +1,5 @@
-import '../global.css'
 import './style.css'
+import '../global.css'
 import { logInUser } from '../firebase.js'
 
 const buttonLogIn = document.querySelector('#button-log-in')

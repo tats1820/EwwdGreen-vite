@@ -27,7 +27,7 @@ import {
     onAuthStateChanged,
     signOut
 } from "firebase/auth";
-//import { userValidation } from './userValidation.js'
+import { userValidation } from './userValidation.js'
 
 
 // Your web app's Firebase configuration
@@ -47,16 +47,16 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
-
+/*
 onAuthStateChanged(auth, (user) => {
     console.log('hubo un cambio en auth')
     if (user) {
-        // const uid = user.uid;
-        // userValidation(true, user.email)
+        //const uid = user.uid;
+       userValidation(true, user.email)
     } else {
-        // userValidation(false)
+        userValidation(false)
     }
-});
+});*/
 
 export async function getProdcuts() {
     const allProducts = [];
@@ -111,17 +111,17 @@ export async function addProductWithId(product, id) {
     }
 }
 
-// export async function uploadFile(name, file, folder) {
-//     const taskImgRef = ref(storage, `${folder}/${name}`);
+export async function uploadFile(name, file, folder) {
+     const taskImgRef = ref(storage, `${folder}/${name}`);
 
-//     try {
-//         await uploadBytes(taskImgRef, file);
-//         const url = await getDownloadURL(taskImgRef);
-//         return url;
-//     } catch (error) {
-//         console.log("error creando imagen ->", error);
-//     }
-// }
+    try {
+         await uploadBytes(taskImgRef, file);
+         const url = await getDownloadURL(taskImgRef);
+         return url;
+     } catch (error) {
+         console.log("error creando imagen ->", error);
+     }
+ }
 
 //crear usuarios
 
@@ -143,7 +143,8 @@ export async function createUser(email, password, username, file) {
         await addUserToDB({
             username,
             imageUrl,
-            email
+            email,
+            admin:false
         }, user.uid)
 
         return {
