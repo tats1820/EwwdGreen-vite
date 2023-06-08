@@ -47,7 +47,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
-/*
+
 onAuthStateChanged(auth, (user) => {
     console.log('hubo un cambio en auth')
     if (user) {
@@ -56,7 +56,7 @@ onAuthStateChanged(auth, (user) => {
     } else {
         userValidation(false)
     }
-});*/
+});
 
 export async function getProdcuts() {
     const allProducts = [];
