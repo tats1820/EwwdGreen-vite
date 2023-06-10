@@ -204,7 +204,7 @@ export async function addUserToDB(userData, uid) {
 
 /* Add products to shopping cart*/
 
-firebase
+/*firebase
   .firestore()
   .collection("carts")
   .doc(userId)
@@ -217,10 +217,10 @@ firebase
     ],
   });
 
-/* 
+/*
 remove a product from a shopping cart */
 
-firebase
+/*firebase
   .firestore()
   .collection("carts")
   .doc(userId)
@@ -230,19 +230,19 @@ firebase
         id: productId,
       },
     ]),
-  });
+  });*/
 
 /*  get the current contents of a shopping cart */
 
-const cart = await firebase.firestore().collection("carts").doc(userId).get();
+//const cart = await firebase.firestore().collection("carts").doc(userId).get();
 
-const products = cart.data().products;
+//const products = cart.data().products;
 
 /*   7. You can also use Firebase Cloud Functions to listen for changes to the "carts" collection and update the UI accordingly.
   
   Here is an example of a Firebase Cloud Function that will update the UI when a product is added to a shopping cart: */
 
-exports.onProductAdded = functions.firestore.onDocumentAdded(
+/*exports.onProductAdded = functions.firestore.onDocumentAdded(
   "carts",
   (event) => {
     const productId = event.data.id;
@@ -250,4 +250,4 @@ exports.onProductAdded = functions.firestore.onDocumentAdded(
 
     // Update the UI to show that the product has been added to the shopping cart.
   }
-);
+);*/
