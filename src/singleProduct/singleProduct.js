@@ -1,3 +1,4 @@
+
 import {
   getProdcuts
 } from "../firebase.js";
@@ -182,6 +183,7 @@ commentList += "</ul>";
 commentPreDiv.innerHTML = commentList;
 const comentarioRobot = document.getElementById("comentarioRobot-list");
 comentarioRobot.appendChild(commentPreDiv);
+
 
 
 

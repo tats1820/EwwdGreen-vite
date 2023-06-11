@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -15,7 +16,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../global.css">
-    <link rel="stylesheet" href="../singleProduct/singleProduct.html">
+    <link rel="stylesheet" href="../singleProduct/singleProduct.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,10 +27,6 @@
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
-        </script>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
 </head>
 
@@ -39,49 +36,34 @@
         <![endif]-->
 
     <!--Empieza el header-->
-    <!-- Idea para poner el header responsive: 
-<header id="header" class="d-flex justify-content-between align-items-center">
-  <div class="logoHeaderSection">
-    <a href="https://weedgreen.com/" target="_blank">
-      <img id="logoWeedGreen" src="./src-Lacho/WeedGreenLogo.png" class="img-fluid">
-    </a>
-  </div>
-  <div class="buttonBuyAndSearchHeader d-flex justify-content-end align-items-center">
-    <img id="logoButton" src="./src-Lacho/Lupa.png" class="img-fluid mr-3">
-    <img id="logoButton" src="./src-Lacho/Car.png" class="img-fluid">
-  </div>
-</header>
- -->
- <header id="headerdesktop">
-    <section class="logoHeaderSection">
-        <a href="../index.html" target="_blank">
-            <img id="logoWeedGreen" src="../public/images/images lacho/WeedGreenLogo.png">
-        </a>
-    </section>
-    <a href="./addProducts/addProducts.html" target="_blank"> <button>Add products</button></a>
+    <header id="headerdesktop">
+        <section class="logoHeaderSection">
+            <a href="../index.html" target="_blank">
+                <img id="logoWeedGreen" src="./images/images lacho/WeedGreenLogo.png">
+            </a>
+        </section>
+        <a href="./addProducts/addProducts.html" target="_blank"> <button>Add products</button></a>
 
 
-    <section class="buttonBuyAndSearchHeader">
-        <img id="logoButton" src="../public/images/images lacho/Lupa.png">
-        <img id="logoButton" src="../public/images/images lacho/Car.png">
-    </section>
+        <section class="buttonBuyAndSearchHeader">
+            <img id="logoButton1" src="./public/images/images lacho/Lupa.png">
+            <img id="logoButton2" src="./public/images/images lacho/Car.png">
+        </section>
 
-    <section class="productListHeader">
-        <a href="../productList/productList.html">
-            Productos
-        </a>
+        <section class="productListHeader">
+            <a href="../productList/productList.html">
+                Productos
+            </a>
+        </section>
 
         <section class="AccountHeader">
             <a href="../sign-in/index.html">
                 Perfil
             </a>
         </section>
-
-
     </header>
 
     <div id="productos"></div>
-    
 
     <div id="talla">
         <select id="size-selector">
@@ -92,49 +74,36 @@
         </select>
     </div>
 
-
     <nav>
         <div class="columns">
             <a href="product_list.html" class="column"></a>
         </div>
-
-
     </nav>
 
-
-
-
     <footer class="row" id="footer">
-        <div class="col" id="footerColumn">
-
+        <div class="col" id="footerColumn1">
             <h2 id="footerTitle">ABOUT OUR STORE</h2>
             <p id="footerText">Use this text area to tell your customers about your brand and vision.
-                You can change
-                it
-                in the theme
-                editor.</p>
-
+                You can change it in the theme editor.</p>
             <p id="footerText" data-toggle="tooltip" data-placement="top" title="Tooltip text">WeedGreen</p>
-
         </div>
-        <div class="col" id="footerColumn">
+        <div class="col" id="footerColumn2">
             <h2 id="footerTitle">POLÍTICAS</h2>
             <ul id="footerText">
                 <li>Términos & Condiciones</li>
                 <li>Envíos</li>
             </ul>
         </div>
-        <div class="col" id="footerColumn">
+        <div class="col" id="footerColumn3">
             <h2 id="footerTitle">NEWSLETTER</h2>
-            <p id="footerText">Suscríbete para recibir lanzamientos, descuentos, y contenido curado para
-                nuestros
+            <p id="footerText">Suscríbete para recibir lanzamientos, descuentos, y contenido curado para nuestros
                 lectores.</p>
             <section id="buttonEmail">
-                <input id="inputEmail" type="Su e-mail">
+                <input id="inputEmail" type="email" placeholder="Su e-mail">
                 <button>enviar</button>
             </section>
         </div>
-        <div class="col" id="footerColumn">
+        <div class="col" id="footerColumn4">
             <h2 id="footerTitle">FOLLOW US</h2>
             <p id="footerText">Síguenos en nuestras redes sociales</p>
             <section id="socialLinks">
@@ -145,12 +114,22 @@
             <button id="social2"></button>
         </div>
     </footer>
-    
+
     <script type="module" src="../main.js" async defer></script>
     <script type="module" src="../productList/productList.js"></script>
     <script type="module" src="./singleProduct.js"></script>
     <script type="module" src="../components/firstComponent/componentes.js"></script>
     <script type="module" src="../carrito.js"></script>
+    <script>
+        const addComment = () => {
+            const comentario = document.getElementById("comentario").value;
+            console.log("Comentario:", comentario);
+            // Aquí puedes agregar la lógica para guardar el comentario en un array o realizar alguna acción adicional
+        };
+
+        const addButton = document.getElementById("buttonAdd");
+        addButton.addEventListener("click", addComment);
+    </script>
 </body>
 
 </html>
