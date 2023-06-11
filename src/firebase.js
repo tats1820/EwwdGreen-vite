@@ -12,6 +12,7 @@ import {
   addDoc,
   setDoc,
   doc,
+  getDoc,
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
@@ -41,9 +42,18 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth(app);
 
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
   console.log("hubo un cambio en auth");
   if (user) {
+    let userId = user.uid;
+    const userInfo = await getUserInfo(userId)
+    let addProduct = document.querySelector('.addProduct');
+    if (userInfo.admin){
+        addProduct.style.display = 'flex'
+    } else {
+        addProduct.style.display = 'none'
+
+    }
     //const uid = user.uid;
     userValidation(true, user.email);
     console.log("entro");
@@ -51,6 +61,16 @@ onAuthStateChanged(auth, (user) => {
     userValidation(false);
   }
 });
+
+export async function getUserInfo(id){
+    try {
+        const docRef = doc(db, "users",id);
+        const docSnap = await getDoc(docRef);
+        return docSnap.data()
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 export async function getProdcuts() {
   const allProducts = [];
