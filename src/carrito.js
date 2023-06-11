@@ -1,18 +1,29 @@
 console.log('HOla soy el carrito')
-import { getCarrito } from "./firebase.js";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, getCarrito } from "./firebase.js";
 /*Carrito*/
 const carritoBody = document.getElementById('carrito-body');
 // Obtener referencia al elemento del DOM que contiene la tabla del carrito
 /* const listaCarrito = document.getElementById('lista-carrito'); */
 const tbody = document.getElementById('carrito-body');
-const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+//const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
 
-const carritoLista = await getCarrito();
-console.log(carritoLista[0]);
-let carritoUser = carritoLista[0].products;
+let carritoLista = {}
+
+onAuthStateChanged(auth, async (user) => {
+  if (user) {
+    let userId = user.uid;
+    const userCart = await getCarrito(userId);
+    carritoLista = userCart;
+    renderCart(userCart.products)
+  } else {
+  }
+});
+
 
 // Función para renderizar los productos en el carrito
-function renderCart() {
+function renderCart(carritoUser) {
+
   // Limpiar el contenido existente del tbody
   tbody.innerHTML = '';
 
@@ -48,8 +59,12 @@ function vaciarCarrito() {
   tbody.innerHTML = '';
 }
 
+function addcart (){
+  carritoLista.push 
+}
+
 // Agregar evento al botón "Vaciar Carrito"
-vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+//vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 
 // Llamar a la función de renderizado para pintar el carrito
-renderCart();
+

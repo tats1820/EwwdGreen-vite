@@ -40,19 +40,20 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
-const auth = getAuth(app);
+export const auth = getAuth(app);
+
+let userId = "";
 
 onAuthStateChanged(auth, async (user) => {
   console.log("hubo un cambio en auth");
   if (user) {
-    let userId = user.uid;
-    const userInfo = await getUserInfo(userId)
-    let addProduct = document.querySelector('.addProduct');
-    if (userInfo.admin){
-        addProduct.style.display = 'flex'
+    userId = user.uid;
+    const userInfo = await getUserInfo(userId);
+    let addProduct = document.querySelector(".addProduct");
+    if (userInfo.admin) {
+      addProduct.style.display = "flex";
     } else {
-        addProduct.style.display = 'none'
-
+      addProduct.style.display = "none";
     }
     //const uid = user.uid;
     userValidation(true, user.email);
@@ -62,14 +63,15 @@ onAuthStateChanged(auth, async (user) => {
   }
 });
 
-export async function getUserInfo(id){
-    try {
-        const docRef = doc(db, "users",id);
-        const docSnap = await getDoc(docRef);
-        return docSnap.data()
-    } catch (error) {
-        console.log(error);
-    }
+
+export async function getUserInfo(id) {
+  try {
+    const docRef = doc(db, "users", id);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 export async function getProdcuts() {
@@ -217,8 +219,8 @@ export async function addUserToDB(userData, uid) {
   try {
     const docRef = await setDoc(doc(db, "users", uid), userData);
     const cartref = await setDoc(doc(db, "carts", uid), {
-      products : []
-    })
+      products: [],
+    });
 
     console.log(docRef);
     console.log(cartref);
@@ -229,18 +231,16 @@ export async function addUserToDB(userData, uid) {
   }
 }
 
-export async function getCarrito() {
+export async function getCarrito(userId) {
   const carritoProduct = [];
 
-  const querySnapshot = await getDocs(collection(db, "carrito"));
-  querySnapshot.forEach((doc) => {
-    carritoProduct.push({
-      ...doc.data(),
-      id: doc.id,
-    });
-  });
-  return carritoProduct;
+  try {
+    const docRef = doc(db, "carts", userId);
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 //console.log(getCarrito())
-
