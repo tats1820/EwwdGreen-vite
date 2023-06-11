@@ -28,6 +28,8 @@
   .buttonBuyAndSearchHeader {
     display: flex;
     position: absolute;
+    justify-content: center;
+    flex-direction: row;
     margin-right: 30px;
     right: 0;
     gap: 20px;

@@ -2,30 +2,118 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/images/images lacho/Weedgreenicon.png">
+    <title>Sign-in</title>
+
+
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;800;900&display=swap" rel="stylesheet">
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous">
+    </script>
 
 <body>
 
+    <header id="headerdesktop">
+        <section class="logoHeaderSection">
+            <a href="../index.html" target="_blank">
+                <img id="logoWeedGreen" src="../public/images/images lacho/WeedGreenLogo.png">
+            </a>
+        </section>
+        <a href="./addProducts/addProducts.html" target="_blank"> <button>Add products</button></a>
+    
+    
+        <section class="buttonBuyAndSearchHeader">
+            <img id="logoButton" src="../public/images/images lacho/Lupa.png">
+            <img id="logoButton" src="../public/images/images lacho/Car.png">
+        </section>
+    
+        <section class="productListHeader">
+            <a href="./productList.html">
+                Productos
+            </a>
+    
+            <section class="AccountHeader">
+                <a href="./sign-in/index.html">
+                    Perfil
+                </a>
+            </section>
+    
+    
+        </header>
+
     <section>
-        <h1>Crea una cuenta</h1>
+        <h1 class="text-creacuenta">Crea una cuenta</h1>
         <label for="email">Email:</label>
         <input type="text" name="email" id="email-input">
-        <label for="username">username:</label>
+        <label for="username">usuario:</label>
         <input type="text" name="username" id="username-input">
-        <label for="password">Password:</label>
+        <label for="password">Contraseña:</label>
         <input type="password" name="password" id="pass-input">
-        <label for="confirm-pass">Confirm Password:</label>
+        <label for="confirm-pass">Confirmar contraseña:</label>
         <input type="password" name="confirm-pass" id="confirm-pass-input">
-        <label for="img">Imagen perfil:</label>
+        <label for="img">Imagen del perfil:</label>
         <input type="file" id="profile-img" name="img" accept="image/png, image/jpeg">
         <button id="button-sign-in">Crear Cuenta</button>
         <br>
         <p>¿Ya tienes una cuenta? <a href="/log-in/">Inicia sesion aqui</a></p>
     </section>
+
+    <footer class="row" id="footer">
+        <div class="col" id="footerColumn">
+
+            <h2 id="footerTitle">ABOUT OUR STORE</h2>
+            <p id="footerText">Use this text area to tell your customers about your brand and vision.
+                You can change
+                it
+                in the theme
+                editor.</p>
+
+            <p id="footerText" data-toggle="tooltip" data-placement="top" title="Tooltip text">WeedGreen</p>
+
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">POLÍTICAS</h2>
+            <ul id="footerText">
+                <li>Términos & Condiciones</li>
+                <li>Envíos</li>
+            </ul>
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">NEWSLETTER</h2>
+            <p id="footerText">Suscríbete para recibir lanzamientos, descuentos, y contenido curado para
+                nuestros
+                lectores.</p>
+            <section id="buttonEmail">
+                <input id="inputEmail" type="Su e-mail">
+                <button>enviar</button>
+            </section>
+        </div>
+        <div class="col" id="footerColumn">
+            <h2 id="footerTitle">FOLLOW US</h2>
+            <p id="footerText">Síguenos en nuestras redes sociales</p>
+            <section id="socialLinks">
+                <img src="../public/images/Social/instagram.png" alt="">
+                <img src="../public/images/Social/youtube.png" alt="">
+            </section>
+            <button id="social1"></button>
+            <button id="social2"></button>
+        </div>
+    </footer>
 
     <script type="module" src="./sign-in.js"></script>
 </body>

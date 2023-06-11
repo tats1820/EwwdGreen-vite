@@ -42,6 +42,8 @@ function renderProducts() {
     const material = document.createElement('p');
     material.textContent = product.material;
 
+
+    let id = uuidv4();
     const sexo = document.createElement('p');
     sexo.textContent = product.sexo;
 
