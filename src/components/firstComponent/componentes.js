@@ -43,7 +43,7 @@ render(){
             <h3>${item.item}</h3>
             <p>${item.precio} COP</p>
             <p>${item.coleccion}</p>
-            <button class="add-to-cart">
+            <button class="add-to-cart" id="addCartItem">
                 Add To Cart
             </button>
         </div>

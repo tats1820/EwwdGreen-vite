@@ -1,3 +1,5 @@
+console.log("firebase doc");
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 
@@ -44,6 +46,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     //const uid = user.uid;
     userValidation(true, user.email);
+    console.log("entro");
   } else {
     userValidation(false);
   }
@@ -193,8 +196,12 @@ export async function addUserToDB(userData, uid) {
   console.log("uid ---->", uid);
   try {
     const docRef = await setDoc(doc(db, "users", uid), userData);
+    const cartref = await setDoc(doc(db, "carts", uid), {
+      products : []
+    })
 
     console.log(docRef);
+    console.log(cartref);
 
     console.log("User written with ID: ", uid);
   } catch (e) {
@@ -202,52 +209,18 @@ export async function addUserToDB(userData, uid) {
   }
 }
 
-/* Add products to shopping cart*/
+export async function getCarrito() {
+  const carritoProduct = [];
 
-firebase
-  .firestore()
-  .collection("carts")
-  .doc(userId)
-  .set({
-    products: [
-      {
-        id: productId,
-        quantity: 1,
-      },
-    ],
+  const querySnapshot = await getDocs(collection(db, "carrito"));
+  querySnapshot.forEach((doc) => {
+    carritoProduct.push({
+      ...doc.data(),
+      id: doc.id,
+    });
   });
+  return carritoProduct;
+}
 
-/* 
-remove a product from a shopping cart */
+console.log(getCarrito())
 
-firebase
-  .firestore()
-  .collection("carts")
-  .doc(userId)
-  .update({
-    products: firebase.firestore.FieldValue.arrayRemove([
-      {
-        id: productId,
-      },
-    ]),
-  });
-
-/*  get the current contents of a shopping cart */
-
-const cart = await firebase.firestore().collection("carts").doc(userId).get();
-
-const products = cart.data().products;
-
-/*   7. You can also use Firebase Cloud Functions to listen for changes to the "carts" collection and update the UI accordingly.
-  
-  Here is an example of a Firebase Cloud Function that will update the UI when a product is added to a shopping cart: */
-
-exports.onProductAdded = functions.firestore.onDocumentAdded(
-  "carts",
-  (event) => {
-    const productId = event.data.id;
-    const userId = event.data.userId;
-
-    // Update the UI to show that the product has been added to the shopping cart.
-  }
-);

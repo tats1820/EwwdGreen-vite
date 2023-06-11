@@ -9,15 +9,18 @@ export function userValidation(userIsSignedIn, email = '') {
         const header = document.querySelector('header-component')
         if(header) header.removeAttribute('logged')
         if (!isHome && !isLogin && !isSingUp){
-            window.location.replace('/log-in/')
+           window.location.href = '../log-in/index.html'
         }
     } else {
         const isLogin =  path.includes('log-in')
         const isSingUp =  path.includes('sign-in')
         if (isSingUp || isLogin){
             console.log('will redirect to home')
-            window.location.replace('/')
-        }
+            setTimeout(()=>{
+                window.location.href= '../index.html'
+
+            },4000)
+            }
         const header = document.querySelector('header-component')
         console.log(header)
         if(header){

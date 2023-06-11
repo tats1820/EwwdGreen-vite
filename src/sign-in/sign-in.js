@@ -17,6 +17,7 @@ async function signUp(e) {
         const userCreated = await createUser(email, pass, username, image)
         if (userCreated.status) {
             alert('usuario creado con exito, uid: ' + userCreated.info)
+            window.location.href ="../index.html"
         } else {
             alert(userCreated.info)
         }

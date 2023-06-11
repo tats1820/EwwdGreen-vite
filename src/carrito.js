@@ -1,11 +1,15 @@
-const selectedColor = colorSelect.options[colorSelect.selectedIndex].text;
-
+console.log('HOla soy el carrito')
+import { getCarrito } from "./firebase.js";
 /*Carrito*/
 const carritoBody = document.getElementById('carrito-body');
 // Obtener referencia al elemento del DOM que contiene la tabla del carrito
-const listaCarrito = document.getElementById('lista-carrito');
+/* const listaCarrito = document.getElementById('lista-carrito'); */
 const tbody = document.getElementById('carrito-body');
 const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+
+const carritoLista = await getCarrito();
+console.log(carritoLista[0]);
+let carritoUser = carritoLista[0].products;
 
 // Función para renderizar los productos en el carrito
 function renderCart() {
@@ -13,15 +17,15 @@ function renderCart() {
   tbody.innerHTML = '';
 
   // Recorrer los productos y crear las filas correspondientes en el tbody
-  products.forEach((product) => {
+  carritoUser.forEach((product) => {
     const row = document.createElement('tr');
 
     // Crear y configurar las celdas de la fila con los datos del producto
-    const imageCell = document.createElement('td');
+   /*  const imageCell = document.createElement('td'); */
     const nameCell = document.createElement('td');
     const priceCell = document.createElement('td');
 
-    imageCell.innerHTML = `<img src="${product.imagen}" alt="${product.name}" width="50" height="50">`;
+   /*  imageCell.innerHTML = `<img src="${product.imagen}" alt="${product.name}" width="50" height="50">`; */
     nameCell.textContent = product.name;
     priceCell.textContent = product.precio;
 
@@ -38,7 +42,7 @@ function renderCart() {
 // Función para vaciar el carrito
 function vaciarCarrito() {
   // Vaciar el arreglo de productos
-  products = [];
+  carritoLista = [];
 
   // Limpiar el contenido del tbody
   tbody.innerHTML = '';

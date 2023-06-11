@@ -7,6 +7,7 @@ const link = window.location.search;
 const buscarPagina = new URLSearchParams(link);
 const singleProduct = buscarPagina.get("id").replace('"', "");
 const buttonComentario = document.getElementById("comentario-button");
+const botonCarrito = document.getElementById("añadir");
 
 /* const productoPorSeparado = productsList.find((object) => object.id == singleProduct) */
 traerProducto();
