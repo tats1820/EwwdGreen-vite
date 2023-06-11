@@ -222,5 +222,5 @@ export async function getCarrito() {
   return carritoProduct;
 }
 
-/*console.log(getCarrito())
+//console.log(getCarrito())
 
