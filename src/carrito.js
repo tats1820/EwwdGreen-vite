@@ -63,7 +63,7 @@ function vaciarCarrito() {
   tbody.innerHTML = '';
 }
 
-function addItem (){
+async function addItem (){
   const link = window.location.search;
   const buscarPagina = new URLSearchParams(link);
   const singleProduct = buscarPagina.get("id").replace('"', "");
