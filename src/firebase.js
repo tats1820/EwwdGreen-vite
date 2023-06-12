@@ -15,6 +15,9 @@ import {
   setDoc,
   doc,
   getDoc,
+  onSnapshot,
+  updateDoc,
+  deleteDoc
 } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
@@ -255,4 +258,63 @@ export async function getCarrito(userId) {
   }
 }
 
-//console.log(getCarrito())
+export async function addCommentToProduct(productId, comment) {
+  try {
+    const querySnapshot = await getDocs(collection(db, "productos"));
+    const allProducts = [];
+    querySnapshot.forEach((doc) => {
+      allProducts.push({
+        ...doc.data(),
+        id: doc.id,
+      });
+    });
+
+    const product = allProducts.find((product) => product.id === productId);
+
+    if (product) {
+      const docRef = await addDoc(collection(db, "productos", productId, "comments"), {
+        comment: comment,
+        profileImg: "https://images.thedirect.com/media/article_full/miguel-spider-man-2099.jpg",
+        profileName:"Lacho",
+    
+      });
+      const commentId = docRef.id;
+      await updateDoc(doc(db, "productos", productId, "comments", commentId), {
+        id: commentId,
+      });
+
+      console.log("Comment added successfully");
+    } else {
+      console.error("Product not found");
+    }
+  } catch (error) {
+    console.error("Error adding comment:", error);
+  }
+}
+
+export function listenForComments(productId, callback) {
+  const commentsRef = collection(db, "productos", productId, "comments");
+  onSnapshot(commentsRef, (snapshot) => {
+    const comments = [];
+    snapshot.forEach((doc) => {
+      comments.push(doc.data());
+    });
+    callback(comments);
+  });
+}
+
+
+export async function deleteComment(productId,id) {
+
+  try {
+    // Create a reference to the comment document
+    const commentRef = doc(db, "productos", productId, "comments", id);
+
+    // Delete the comment document
+    await deleteDoc(commentRef);
+
+    console.log("Comment deleted successfully");
+  } catch (error) {
+    console.error("Error deleting comment:", error);
+  }
+}

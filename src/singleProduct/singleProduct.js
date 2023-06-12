@@ -1,21 +1,104 @@
 import {
-  getProdcuts
+  getProdcuts,
+  addCommentToProduct,
+  listenForComments,
+  deleteComment
 } from "../firebase.js";
 
 const link = window.location.search;
 const buscarPagina = new URLSearchParams(link);
 const singleProduct = buscarPagina.get("id").replace('"', "");
-const buttonComentario = document.getElementById("comentario-button");
-const botonCarrito = document.getElementById("añadir");
+const botonCarrito = document.getElementById("addCarrito");
 
 traerProducto();
 
 async function traerProducto() {
   let productos = await getProdcuts();
-  console.log(productos);
   const productoPorSeparado = productos.find((data) => data.id == singleProduct);
   pintar(productoPorSeparado);
+
+  const comments = listenForComments(singleProduct, displayComments);
+  displayComments(comments);
 }
+
+function displayComments(comments) {
+  const comentarioList = document.getElementById("comentario-list");
+  const messageContainer = document.getElementById("message-container");
+  comentarioList.innerHTML = "";
+
+  if (comments && comments.length > 0) {
+    comments.forEach((comment) => {
+      const commentItem = document.createElement("div");
+
+      let commentText = document.createElement("p");
+      commentText.innerHTML = comment.comment;
+
+      let imgProfile = document.createElement("img");
+      imgProfile.setAttribute(
+        "src",
+        comment.profileImg,
+      );
+      imgProfile.classList.add("image-profile");
+  
+      let nameProfile = document.createElement("p");
+      nameProfile.innerHTML = comment.profileName;
+      nameProfile.classList.add("name-profile");
+  
+      commentItem.appendChild(commentText);
+      commentItem.appendChild(nameProfile);
+      
+      commentItem.appendChild(imgProfile);
+
+
+      const deleteButton = document.createElement("button");
+      deleteButton.classList.add("delete-button");
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", async () => {
+        try {
+         
+          await deleteComment(singleProduct, comment.id);
+          commentItem.remove();
+          console.log("Comment deleted successfully");
+        } catch (error) {
+          console.error("Error deleting comment:", error);
+        }
+      });
+
+      console.log(comment.id+" id")
+      commentItem.appendChild(deleteButton);
+      comentarioList.appendChild(commentItem);
+
+      messageContainer.style.display = "none";
+    });
+  } else {
+
+    messageContainer.style.display = "block";
+  }
+}
+
+
+
+async function addComment() {
+  console.log("addComment")
+  const inputText = document.getElementById("comentario-input").value.trim();
+  const errorMessage = document.getElementById("error-message");
+
+  if (inputText === "") {
+    errorMessage.style.display = "block";
+    return;
+  }
+
+
+  errorMessage.style.display = "none";
+
+
+
+  await addCommentToProduct(singleProduct, inputText);
+
+
+}
+
+
 
 function pintar(productoPorSeparado) {
   const productosLink = document.getElementById("productos");
@@ -29,144 +112,19 @@ function pintar(productoPorSeparado) {
           <h5 class="price_detail">${productoPorSeparado.precio}</h5>
           <p class="collect_detail">Collection: ${productoPorSeparado.tipo}</p>
           
-          <button id="añadir" class="button is-black button_añadir">Añadir</button>
+          <button id="addCarrito" class="button is-black button_añadir">Añadir</button>
   
           <h3>Comentarios</h3>
+
           <input type="text" id="comentario-input"></input>
-          <button id="comentario-button" onclick="addTocomentarioArray()">Enviar comentario</button>
+
+         <button id="comentario-button">Enviar comentario</button>
           <div id="error-message" style="display: none; color: red;">Por favor ingrese un texto</div>
           <div id="comentario-list"></div>
           <div id="comentarioRobot-list"></div>
           <div id="message-container" style="display: block;">No hay comentarios</div>
       </article>
   </section>`;
+  const commentButton = document.getElementById("comentario-button");
+  commentButton.addEventListener("click", addComment);
 }
-
-function addTocomentarioArray() {
-  const inputText = document.getElementById("comentario-input").value.trim();
-  document.getElementById("comentario-input").value = "";
-
-  if (inputText === "") {
-    document.getElementById("error-message").style.display = "block";
-    return;
-  }
-
-  document.getElementById("error-message").style.display = "none";
-
-  const currentProduct = productoPorSeparado;
-  const comentarioArray = currentProduct.comentarioArray || [];
-
-  comentarioArray.push(inputText);
-  document.getElementById("message-container").style.display = "none";
-  currentProduct.comentarioArray = comentarioArray;
-
-  const outputList = document.getElementById("comentario-list");
-  outputList.innerHTML = "";
-
-  comentarioArray.forEach((item, i) => {
-    const li = document.createElement("li");
-    li.classList.add("comentario-item");
-
-    const imgProfile = document.createElement("img");
-    imgProfile.setAttribute(
-      "src",
-      "https://www.daysoftheyear.com/wp-content/uploads/international-cat-day1-scaled.jpg"
-    );
-    imgProfile.classList.add("image-profile");
-
-    const nameProfile = document.createElement("p");
-    nameProfile.innerHTML = "Lacho";
-    nameProfile.classList.add("name-profile");
-
-    const content = document.createElement("p");
-    content.innerHTML = item;
-    content.classList.add("comentario-content");
-
-    const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "Eliminar";
-    deleteButton.onclick = () => deleteComment(i);
-    deleteButton.classList.add("delete-button");
-
-    li.appendChild(imgProfile);
-    li.appendChild(nameProfile);
-    li.appendChild(content);
-    li.appendChild(deleteButton);
-
-    outputList.appendChild(li);
-  });
-}
-
-function deleteComment(index) {
-  const currentProduct = productoPorSeparado;
-  const comentarioArray = currentProduct.comentarioArray || [];
-  comentarioArray.splice(index, 1);
-  currentProduct.comentarioArray = comentarioArray;
-
-  const outputList = document.getElementById("comentario-list");
-  outputList.innerHTML = "";
-
-  comentarioArray.forEach((item, i) => {
-    const li = document.createElement("li");
-    li.classList.add("comentario-item");
-
-    const imgProfile = document.createElement("img");
-    imgProfile.setAttribute(
-      "src",
-      "https://www.daysoftheyear.com/wp-content/uploads/international-cat-day1-scaled.jpg"
-    );
-    imgProfile.classList.add("image-profile");
-
-    const nameProfile = document.createElement("p");
-    nameProfile.innerHTML = "Lacho";
-    nameProfile.classList.add("name-profile");
-
-    const content = document.createElement("p");
-    content.innerHTML = item;
-    content.classList.add("comentario-content");
-
-    const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = "Eliminar";
-    deleteButton.onclick = () => deleteComment(i);
-    deleteButton.classList.add("delete-button");
-
-    li.appendChild(imgProfile);
-    li.appendChild(nameProfile);
-    li.appendChild(content);
-    li.appendChild(deleteButton);
-
-    outputList.appendChild(li);
-  });
-
-  if (comentarioArray.length === 0) {
-    document.getElementById("message-container").style.display = "block";
-  }
-}
-
-let commentPreDiv = document.createElement("div");
-let commentList = "<ul>";
-
-productoPorSeparado.comentarioArray.forEach((comment) => {
-  if (productoPorSeparado.comentarioArray.length === 0) {
-    // Do nothing
-  } else {
-    document.getElementById("message-container").style.display = "none";
-    commentList += `
-    <li class="comentarioRobotList">
-      <img class="userRobotImg" src="${comment.profileUrl}" />
-      <p class="userRobotName">${comment.name}</p>
-      <p class="userRobotComment">${comment.comment}</p>
-    </li>`;
-  }
-});
-
-commentList += "</ul>";
-commentPreDiv.innerHTML = commentList;
-const comentarioRobot = document.getElementById("comentarioRobot-list");
-comentarioRobot.appendChild(commentPreDiv);
-
-const sizeSelector = document.getElementById("size-selector");
-
-sizeSelector.addEventListener("change", function () {
-  const selectedSize = sizeSelector.value;
-  console.log("Selected size: " + selectedSize);
-});
