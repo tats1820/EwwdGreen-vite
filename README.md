@@ -9,6 +9,10 @@ Taller semestral de Programacion Web donde iremos integrando diferentes elemento
 
 Listo :).
 
+### correo y contraseña de admin:
+correo: ticamposr@gmail.com
+contraseña: 123456
+
 ### Qué hicimos en la entrega final?
 Tatiana Campos: LOGIN, REGISTRO Y CERRAR SESIÓN
 - Pasar el código a Vite
