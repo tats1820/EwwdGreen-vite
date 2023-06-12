@@ -119,7 +119,7 @@ function pintar(productoPorSeparado) {
   addCarritoButton.addEventListener("click", showOffcanvas);
 }
 
-function showOffcanvas() {
+export function showOffcanvas() {
   const offcanvas = document.getElementById("offcanvas");
   offcanvas.style.display = "block";
   const showBlock = document.getElementById("offcanvas");
@@ -137,3 +137,13 @@ function showOffcanvas() {
   `;
   /* await addItem(); */
 }
+
+/* Prueba anadir producto al carrito de firebase */
+
+const addItemprueba = document.getElementById('addCarrito');
+addItemprueba.addEventListener("click", pruebaAddItem);
+
+async function pruebaAddItem (){
+  await addItem
+}
+
