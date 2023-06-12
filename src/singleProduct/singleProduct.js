@@ -2,7 +2,7 @@ import {
   getProdcuts,
   addCommentToProduct,
   listenForComments,
-  deleteComment
+  deleteComment,
 } from "../firebase.js";
 
 const link = window.location.search;
@@ -14,7 +14,9 @@ traerProducto();
 
 async function traerProducto() {
   let productos = await getProdcuts();
-  const productoPorSeparado = productos.find((data) => data.id == singleProduct);
+  const productoPorSeparado = productos.find(
+    (data) => data.id == singleProduct
+  );
   pintar(productoPorSeparado);
 
   const comments = listenForComments(singleProduct, displayComments);
@@ -34,28 +36,23 @@ function displayComments(comments) {
       commentText.innerHTML = comment.comment;
 
       let imgProfile = document.createElement("img");
-      imgProfile.setAttribute(
-        "src",
-        comment.profileImg,
-      );
+      imgProfile.setAttribute("src", comment.profileImg);
       imgProfile.classList.add("image-profile");
-  
+
       let nameProfile = document.createElement("p");
       nameProfile.innerHTML = comment.profileName;
       nameProfile.classList.add("name-profile");
-  
+
       commentItem.appendChild(commentText);
       commentItem.appendChild(nameProfile);
-      
-      commentItem.appendChild(imgProfile);
 
+      commentItem.appendChild(imgProfile);
 
       const deleteButton = document.createElement("button");
       deleteButton.classList.add("delete-button");
       deleteButton.textContent = "Delete";
       deleteButton.addEventListener("click", async () => {
         try {
-         
           await deleteComment(singleProduct, comment.id);
           commentItem.remove();
           console.log("Comment deleted successfully");
@@ -64,22 +61,19 @@ function displayComments(comments) {
         }
       });
 
-      console.log(comment.id+" id")
+      console.log(comment.id + " id");
       commentItem.appendChild(deleteButton);
       comentarioList.appendChild(commentItem);
 
       messageContainer.style.display = "none";
     });
   } else {
-
     messageContainer.style.display = "block";
   }
 }
 
-
-
 async function addComment() {
-  console.log("addComment")
+  console.log("addComment");
   const inputText = document.getElementById("comentario-input").value.trim();
   const errorMessage = document.getElementById("error-message");
 
@@ -88,23 +82,15 @@ async function addComment() {
     return;
   }
 
-
   errorMessage.style.display = "none";
 
-
-
   await addCommentToProduct(singleProduct, inputText);
-
-
 }
-
-
 
 function pintar(productoPorSeparado) {
   const productosLink = document.getElementById("productos");
   productosLink.innerHTML = "";
-  productosLink.innerHTML =
-    `<section class="card_list">
+  productosLink.innerHTML = `<section class="card_list">
       <figure class="card_figure"><img class="card_img" src="${productoPorSeparado.imagenProducto}"></figure>
       <article class="card_article">
           <h2 class="name_detail">${productoPorSeparado.item}</h2>
@@ -127,4 +113,25 @@ function pintar(productoPorSeparado) {
   </section>`;
   const commentButton = document.getElementById("comentario-button");
   commentButton.addEventListener("click", addComment);
+
+  const addCarritoButton = document.getElementById("addCarrito");
+  addCarritoButton.addEventListener("click", showOffcanvas);
+}
+
+function showOffcanvas() {
+  const offcanvas = document.getElementById("offcanvas");
+  offcanvas.style.display = "block";
+  const showBlock = document.getElementById("offcanvas");
+  showBlock.innerHTML = "";
+  showBlock.innerHTML = `
+  
+  
+  <div class="carrito-body">
+            <h2>Here's your cart</h2>
+            <p>Enjoy your purchase!</p>
+            <img id="logoButton2" src="../public/images/images lacho/Car.png">
+            <!-- Contenido del offcanvas -->
+        </div>
+  
+  `;
 }

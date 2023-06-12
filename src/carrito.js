@@ -4,8 +4,9 @@ import { addCart, auth, getCarrito } from "./firebase.js";
 /*Carrito*/
 const carritoBody = document.getElementById('carrito-body');
 // Obtener referencia al elemento del DOM que contiene la tabla del carrito
+
 /* const listaCarrito = document.getElementById('lista-carrito'); */
-const tbody = document.getElementById('carrito-body');
+
 //const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
 
 let carritoLista = {}
@@ -27,10 +28,10 @@ addEventListener(alert('registrate o inicia sesion'))
 // Función para renderizar los productos en el carrito
 function renderCart(carritoUser) {
 
-  // Limpiar el contenido existente del tbody
-  tbody.innerHTML = '';
+  // Limpiar el contenido existente del carritoBody
+  carritoBody.innerHTML = '';
 
-  // Recorrer los productos y crear las filas correspondientes en el tbody
+  // Recorrer los productos y crear las filas correspondientes en el carritoBody
   carritoUser.forEach((product) => {
     const row = document.createElement('tr');
 
@@ -44,12 +45,12 @@ function renderCart(carritoUser) {
     priceCell.textContent = product.precio;
 
     // Añadir las celdas a la fila
-    row.appendChild(imageCell);
+ /*    row.appendChild(imageCell); */
     row.appendChild(nameCell);
     row.appendChild(priceCell);
 
-    // Añadir la fila al tbody
-    tbody.appendChild(row);
+    // Añadir la fila al carritoBody
+    carritoBody.appendChild(row);
   });
 }
 
@@ -58,11 +59,11 @@ function vaciarCarrito() {
   // Vaciar el arreglo de productos
   carritoLista = [];
 
-  // Limpiar el contenido del tbody
-  tbody.innerHTML = '';
+  // Limpiar el contenido del carritoBody
+  carritoBody.innerHTML = '';
 }
 
-async function addItem (){
+export async function addItem (){
   const link = window.location.search;
   const buscarPagina = new URLSearchParams(link);
   const singleProduct = buscarPagina.get("id").replace('"', "");
@@ -79,4 +80,6 @@ async function addItem (){
 //vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
 
 // Llamar a la función de renderizado para pintar el carrito
+
+const showCart= document.getElementById('addCarrito');
 

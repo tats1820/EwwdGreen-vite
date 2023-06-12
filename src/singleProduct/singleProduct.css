@@ -509,3 +509,30 @@ button {
   width: 80%;
   justify-content: end;
 }
+
+
+.offcanvas {
+  position: fixed;
+  top: 0;
+  right: -300px; /* Initially hide offcanvas by moving it offscreen */
+  width: 300px;
+  height: 100%;
+  background-color: #f0f0f0;
+  transition: right 0.3s ease;
+}
+
+.offcanvas.show {
+  right: 0; /* Move offcanvas to show it */
+  top: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f0f0f0;
+  transition: right 0.3s ease;
+}
+
+.offcanvas-content{
+  width: 300px;
+  height: 100%;
+  background-color: #04acbf;
+  transition: 0.3s ease;
+}
