@@ -74,6 +74,11 @@ footer {
 }
 /* Resto de estilos */
 
+.productForm{
+    padding-top: 100px
+    ;
+}
+
 #products-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
