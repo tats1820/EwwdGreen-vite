@@ -1,6 +1,5 @@
 console.log('HOla soy el carrito')
 import { onAuthStateChanged } from "firebase/auth";
-import { render } from "sass";
 import { addCart, auth, getCarrito } from "./firebase.js";
 /*Carrito*/
 const carritoBody = document.getElementById('carrito-body');
