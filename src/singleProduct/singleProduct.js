@@ -1,3 +1,4 @@
+import { addItem } from "../carrito.js";
 import {
   getProdcuts,
   addCommentToProduct,
@@ -134,4 +135,5 @@ function showOffcanvas() {
         </div>
   
   `;
+  /* await addItem(); */
 }

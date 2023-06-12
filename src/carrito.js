@@ -81,5 +81,5 @@ export async function addItem (){
 
 // Llamar a la función de renderizado para pintar el carrito
 
-const showCart= document.getElementById('addCarrito');
+/* renderCart(); */
 
