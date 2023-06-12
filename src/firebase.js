@@ -116,6 +116,16 @@ export async function addProduct(product) {
   }
 }
 
+export async function addCart (cart, id){
+  try {
+    const docRef = await setDoc(doc(db, "carts", id), cart);
+
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
 export async function addProductWithId(product, id) {
   try {
     // const imageUrl = await uploadFile(file.name, file, 'products');

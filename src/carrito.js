@@ -1,6 +1,7 @@
 console.log('HOla soy el carrito')
 import { onAuthStateChanged } from "firebase/auth";
-import { auth, getCarrito } from "./firebase.js";
+import { render } from "sass";
+import { addCart, auth, getCarrito } from "./firebase.js";
 /*Carrito*/
 const carritoBody = document.getElementById('carrito-body');
 // Obtener referencia al elemento del DOM que contiene la tabla del carrito
@@ -9,14 +10,17 @@ const tbody = document.getElementById('carrito-body');
 //const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
 
 let carritoLista = {}
-
+let userID = ''
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    let userId = user.uid;
-    const userCart = await getCarrito(userId);
+    userID = user.uid;
+    const userCart = await getCarrito(userID);
     carritoLista = userCart;
     renderCart(userCart.products)
+    addEventListener(click, addcart)
+    addEventListener(vaciar)
   } else {
+addEventListener(alert('registrate o inicia sesion'))
   }
 });
 
@@ -59,8 +63,17 @@ function vaciarCarrito() {
   tbody.innerHTML = '';
 }
 
-function addcart (){
-  carritoLista.push 
+function addItem (){
+  const link = window.location.search;
+  const buscarPagina = new URLSearchParams(link);
+  const singleProduct = buscarPagina.get("id").replace('"', "");
+
+    let productos = await getProdcuts();
+      const productoPorSeparado = productos.find((data) => data.id == singleProduct);
+    carritoLista.products.push (productoPorSeparado)
+  
+ addCart(carritoLista, userID)
+ renderCart(carritoLista.products)
 }
 
 // Agregar evento al botón "Vaciar Carrito"
